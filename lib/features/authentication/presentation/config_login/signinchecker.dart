@@ -13,7 +13,6 @@ class SignInChecker extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print(snapshot.data!.email);
             return MainPage();
           } else {
             return QuoteAuth();

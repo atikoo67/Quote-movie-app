@@ -1,4 +1,3 @@
-import 'package:quote/features/movie/data/models/videomodel.dart';
 import 'package:quote/features/movie/domain/entities/actors_model.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
 import 'package:quote/features/movie/domain/entities/videomodel.dart';

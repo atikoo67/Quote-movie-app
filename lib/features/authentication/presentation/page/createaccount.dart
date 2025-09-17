@@ -54,14 +54,9 @@ class _CreateAccountState extends State<CreateAccount> {
             MaterialPageRoute(builder: (context) => SignInChecker()),
           );
         }
-      } else {
-        print("❌ Registration failed: UID is null");
-      }
+      } else {}
     } on FirebaseAuthException catch (error) {
-      print("🔥 FirebaseAuth error: ${error.message}");
-    } catch (e) {
-      print("❌ Unexpected error: ${e.toString()}");
-    }
+    } catch (e) {}
   }
 
   @override

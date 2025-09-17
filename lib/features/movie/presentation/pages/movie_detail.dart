@@ -38,7 +38,6 @@ class _HomepageState extends ConsumerState<MovieDetail> {
     );
 
     // Print all the available streams.
-    print(manifest);
 
     // Get the audio streams.
     final video = manifest.muxed.withHighestBitrate();
@@ -80,7 +79,6 @@ class _HomepageState extends ConsumerState<MovieDetail> {
     );
     final similarMovies = ref.watch(similarMoviesProvider(widget.movie.fileId));
     final actors = ref.watch(actorsProvider(widget.movie.fileId));
-    print('id : ${widget.movie.description}');
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
       floatingActionButton: SizedBox(
@@ -238,7 +236,6 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                                     );
                                   },
                                   error: (Object error, StackTrace stackTrace) {
-                                    print(error);
                                     return Center(
                                       child: Column(
                                         mainAxisAlignment:
@@ -496,7 +493,6 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                           );
                         },
                         error: (Object error, StackTrace stackTrace) {
-                          print(error);
                           return SizedBox(
                             height: 100,
                             child: ListView.builder(
@@ -554,7 +550,6 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                                     itemCount: movies.length,
                                     itemBuilder: (context, index) {
                                       final movie = movies[index];
-                                      print(movie.title);
                                       return Padding(
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 5,
@@ -636,7 +631,7 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                                     itemCount: movies.length,
                                     itemBuilder: (context, index) {
                                       final movie = movies[index];
-                                      print(movie.title);
+
                                       return Padding(
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 5,

@@ -37,12 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         );
       }
     } on FirebaseAuthException catch (error) {
-      print("the error >>>>>>${error.message}<<<<<<<");
-    } on Exception catch (otherError) {
-      print(
-        "the error encountered except auth <>>>>>>>>>>>>>>>>>>>>>.${otherError.toString()}<<<<<<<<<<<<<<<<<<<<<<<<<",
-      );
-    }
+    } on Exception catch (otherError) {}
   }
 
   @override

@@ -206,7 +206,6 @@ class _HomepageState extends ConsumerState<HomePage> {
                           itemCount: movies.length,
                           itemBuilder: (context, index) {
                             final movie = movies[index];
-                            print(movie.title);
                             return Padding(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 5,

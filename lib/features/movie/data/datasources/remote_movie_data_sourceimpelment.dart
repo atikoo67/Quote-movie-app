@@ -12,7 +12,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
   final queryparameter = {'api_key': ApiKey.apiKey};
   @override
   Future<List<MovieModel>> fetchPopularMovies() async {
-    print('the popular make a request');
     final response = await dio.get(
       '/movie/popular',
       queryParameters: queryparameter,
@@ -24,7 +23,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchTopRatedMovies() async {
-    print('the top rated make a request');
     final response = await dio.get(
       '/movie/top_rated',
       queryParameters: queryparameter,
@@ -36,7 +34,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchTrendingMovies() async {
-    print('the trending make a request');
     final response = await dio.get(
       '/movie/now_playing',
       queryParameters: queryparameter,
@@ -48,7 +45,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchTvSeriesMovies() async {
-    print('the tv series make a request');
     final response = await dio.get(
       '/tv/popular',
       queryParameters: queryparameter,
@@ -60,7 +56,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchUpComingMovies() async {
-    print('the upcomming make a request');
     final response = await dio.get(
       '/movie/upcoming',
       queryParameters: queryparameter,
@@ -72,7 +67,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchMovies() async {
-    print('the movies make a request');
     final response = await dio.get(
       '/discover/movie',
       queryParameters: queryparameter,
@@ -84,7 +78,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<VideoModel> fetchVideo(int id) async {
-    print('the movies make a request');
     final response = await dio.get(
       '/movie/$id/videos',
       queryParameters: queryparameter,
@@ -97,7 +90,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchRecommendationMovies(int id) async {
-    print('the movies make a request');
     final response = await dio.get(
       '/movie/$id/recommendations',
       queryParameters: queryparameter,
@@ -109,7 +101,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchSimilarMovies(int id) async {
-    print('the movies make a request');
     final response = await dio.get(
       '/movie/$id/similar',
       queryParameters: queryparameter,
@@ -121,7 +112,6 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<ActorsModel>> fetchActors(int id) async {
-    print('the movies make a request');
     final response = await dio.get(
       '/movie/$id/credits',
       queryParameters: queryparameter,
@@ -133,12 +123,9 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchmoviesearch(String query) async {
-    print('the movies make a request');
     final response = await dio.get(
       '/search/movie?query=$query&include_adult=false&language=en-US&page=1&api_key=${ApiKey.apiKey}',
     );
-    print(response.statusCode);
-    print(response.data);
     return (response.data['results'] as List)
         .map((json) => MovieModel.fromJson(json))
         .toList();
@@ -146,12 +133,9 @@ class RemoteMovieDataSourceimpelment implements MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> fetchtvsearch(String query) async {
-    print('the movies make a request');
     final response = await dio.get(
       '/search/tv?query=$query&include_adult=false&language=en-US&page=1&api_key=${ApiKey.apiKey}',
     );
-    print(response.statusCode);
-    print(response.data);
     return (response.data['results'] as List)
         .map((json) => MovieModel.fromJson(json))
         .toList();

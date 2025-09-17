@@ -1,5 +1,4 @@
 import 'package:quote/features/movie/data/models/actor.dart';
-import 'package:quote/features/movie/data/models/videomodel.dart';
 
 class ActorsModel extends Actor {
   ActorsModel({

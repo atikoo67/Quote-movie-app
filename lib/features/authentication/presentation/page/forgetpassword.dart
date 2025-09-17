@@ -17,10 +17,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   final phoneNumberController = TextEditingController();
   String? fullPhoneNumber;
   Future resetPassword() async {
-    setState(() {
-      print(phoneNumberController.text);
-      print(fullPhoneNumber);
-    });
+    setState(() {});
   }
 
   @override

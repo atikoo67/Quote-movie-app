@@ -51,7 +51,6 @@ class _MovieGridState extends ConsumerState<MovieGrid> {
             );
           },
           error: (e, _s) {
-            print(e.toString() + _s.toString());
             return SliverToBoxAdapter(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

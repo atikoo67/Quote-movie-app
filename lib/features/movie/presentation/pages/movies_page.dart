@@ -31,7 +31,6 @@ class _MoviePageState extends ConsumerState<MoviePage> {
 
   connect() {
     _refreshController.refreshCompleted();
-    print('page refreshed!');
   }
 
   @override

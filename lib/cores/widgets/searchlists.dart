@@ -44,8 +44,7 @@ class _SearchResultsListState extends ConsumerState<SearchResultsList> {
                     ),
                   );
           },
-          error: (e, _s) {
-            print(e.toString() + _s.toString());
+          error: (e, s) {
             return SliverToBoxAdapter(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

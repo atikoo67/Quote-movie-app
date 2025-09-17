@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ErrorCardimage extends StatelessWidget {
   const ErrorCardimage({super.key});
