@@ -100,17 +100,17 @@ class MovieAutoSlider extends StatelessWidget {
                         children: [
                           for (int c = 1; c <= 5; c++)
                             Icon(
-                              c <= movie.price / 2
+                              c <= movie.rating / 2
                                   ? Icons.star
-                                  : c >= movie.price / 2 &&
-                                        c - 1 <= movie.price / 2
+                                  : c >= movie.rating / 2 &&
+                                        c - 1 <= movie.rating / 2
                                   ? Icons.star_half
                                   : Icons.star_border_outlined,
                               size: 20,
                               color:
-                                  c <= movie.price / 2 ||
-                                      (c >= movie.price / 2 &&
-                                          c - 1 <= movie.price / 2)
+                                  c <= movie.rating / 2 ||
+                                      (c >= movie.rating / 2 &&
+                                          c - 1 <= movie.rating / 2)
                                   ? theme.iconTheme.color
                                   : theme.colorScheme.secondary,
                             ),

@@ -58,7 +58,10 @@ class _MovieGridState extends ConsumerState<MovieGrid> {
 
                 children: [
                   SizedBox(height: ScreenSize.screenHeight(context) * 0.3),
-                  Text("Oops! Something went wrong. Please try again."),
+                  Text(
+                    "Oops! Something went wrong. Please try again.",
+                    style: theme.textTheme.bodySmall,
+                  ),
                 ],
               ),
             );

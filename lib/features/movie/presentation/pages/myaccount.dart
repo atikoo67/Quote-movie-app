@@ -84,7 +84,7 @@ class _MyAccountState extends ConsumerState<MyAccount> {
                         children: [
                           Text('Profile', style: theme.textTheme.bodySmall),
                           Text(
-                            '${profile?['username'] ?? "quote user"}',
+                            '${profile['username'] ?? "quote user"}',
                             style: theme.textTheme.displaySmall,
                           ),
                           Text(

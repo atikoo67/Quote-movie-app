@@ -89,17 +89,17 @@ class _SearchCardState extends State<SearchCard> {
                     children: [
                       for (int c = 1; c <= 5; c++)
                         Icon(
-                          c <= widget.movie.price / 2
+                          c <= widget.movie.rating / 2
                               ? Icons.star
-                              : c >= widget.movie.price / 2 &&
-                                    c - 1 <= widget.movie.price / 2
+                              : c >= widget.movie.rating / 2 &&
+                                    c - 1 <= widget.movie.rating / 2
                               ? Icons.star_half
                               : Icons.star_border_outlined,
                           size: 15,
                           color:
-                              c <= widget.movie.price / 2 ||
-                                  (c >= widget.movie.price / 2 &&
-                                      c - 1 <= widget.movie.price / 2)
+                              c <= widget.movie.rating / 2 ||
+                                  (c >= widget.movie.rating / 2 &&
+                                      c - 1 <= widget.movie.rating / 2)
                               ? theme.iconTheme.color
                               : theme.colorScheme.secondary,
                         ),

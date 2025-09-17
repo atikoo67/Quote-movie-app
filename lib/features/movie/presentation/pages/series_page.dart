@@ -37,7 +37,7 @@ class _HomepageState extends ConsumerState<SeriesPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/launch_icon/my_logo.png", height: 50),
+            Image.asset("assets/launch_icon/my_logo.png", height: 40),
             Text("Movies", style: theme.textTheme.bodyLarge),
           ],
         ),

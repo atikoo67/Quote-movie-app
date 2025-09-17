@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
 
 class MyTextField extends StatelessWidget {
-  // final String hintText;
   final String label;
   final TextEditingController? controller;
   TextInputType? keyboardType;
   MyTextField({
     super.key,
-    // required this.hintText,
+
     required this.label,
     required this.controller,
     this.keyboardType,
@@ -34,10 +33,6 @@ class MyTextField extends StatelessWidget {
           // hintText: hintText,
           contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),
 
-          // hintStyle: TextStyle(
-          //   fontSize: ScreenSize.screenHeight(context) * 0.015,
-          //  color: theme.textTheme.labelMedium!.color,
-          // ),
           filled: true,
         ),
       ),

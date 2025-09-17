@@ -340,17 +340,17 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                                           children: [
                                             for (int c = 1; c <= 5; c++)
                                               Icon(
-                                                c <= widget.movie.price / 2
+                                                c <= widget.movie.rating / 2
                                                     ? Icons.star
                                                     : c >=
                                                               widget
                                                                       .movie
-                                                                      .price /
+                                                                      .rating /
                                                                   2 &&
                                                           c - 1 <=
                                                               widget
                                                                       .movie
-                                                                      .price /
+                                                                      .rating /
                                                                   2
                                                     ? Icons.star_half
                                                     : Icons
@@ -358,17 +358,19 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                                                 size: 25,
                                                 color:
                                                     c <=
-                                                            widget.movie.price /
+                                                            widget
+                                                                    .movie
+                                                                    .rating /
                                                                 2 ||
                                                         (c >=
                                                                 widget
                                                                         .movie
-                                                                        .price /
+                                                                        .rating /
                                                                     2 &&
                                                             c - 1 <=
                                                                 widget
                                                                         .movie
-                                                                        .price /
+                                                                        .rating /
                                                                     2)
                                                     ? theme.iconTheme.color
                                                     : theme
@@ -423,6 +425,7 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                               ),
                             ),
                           ),
+                          SizedBox(width: 15),
                         ],
                       ),
                     ),

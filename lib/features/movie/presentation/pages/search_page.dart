@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quote/cores/utils/constant/strings.dart';
-import 'package:quote/cores/utils/theme/textstyle.dart';
 import 'package:quote/cores/widgets/searchlists.dart';
 import 'package:quote/features/movie/presentation/providers/movie_provider.dart';
 
