@@ -14,8 +14,17 @@ class _FavoritesState extends State<Favorites> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Favorites', style: theme.textTheme.bodyMedium),
+        centerTitle: true,
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: Text('No Favorites', style: theme.textTheme.bodySmall),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

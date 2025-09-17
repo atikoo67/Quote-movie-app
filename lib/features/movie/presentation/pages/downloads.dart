@@ -13,9 +13,18 @@ class _DownloadsState extends State<Downloads> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Downloads', style: theme.textTheme.bodyMedium),
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          Expanded(
+            child: Center(
+              child: Text('No Downloads', style: theme.textTheme.bodySmall),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
