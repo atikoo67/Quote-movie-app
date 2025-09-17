@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
 import 'package:quote/cores/widgets/moviecard.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
@@ -39,11 +40,10 @@ class _MovieGridState extends ConsumerState<MovieGrid> {
                   return MovieCard(
                     movie: movie,
                     width: 100,
-                    ontap: () => Navigator.push(
+                    ontap: () => PersistentNavBarNavigator.pushNewScreen(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => MovieDetail(movie: movie),
-                      ),
+                      withNavBar: false,
+                      screen: MovieDetail(movie: movie),
                     ),
                   );
                 }, childCount: movies.length),
