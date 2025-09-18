@@ -44,7 +44,7 @@ class PhoneNumberField extends StatelessWidget {
         labelStyle: theme.textTheme.titleSmall,
         // hintText: hintText,
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-
+        filled: true,
         labelText: 'Phone Numbers',
       ),
       initialCountryCode: 'ET', // Ethiopia

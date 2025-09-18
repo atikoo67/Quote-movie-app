@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:quote/cores/components/notifier/mysnackbar.dart';
 import 'package:quote/cores/utils/constant/app_endpoint.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
@@ -44,20 +44,6 @@ class _HomepageState extends ConsumerState<MovieDetail> {
 
     // Download it
     return video.url.toString();
-  }
-
-  Future showsnackbar(message) async {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM_RIGHT,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.green[800],
-      textColor: Colors.white,
-      fontSize: 14.0,
-    );
   }
 
   @override
@@ -133,7 +119,11 @@ class _HomepageState extends ConsumerState<MovieDetail> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await showsnackbar("false download button clicked");
+                      MySnackbar.showSnack(
+                        context,
+                        "Downloading",
+                        Colors.green[800],
+                      );
                     },
                     child: Container(
                       decoration: BoxDecoration(

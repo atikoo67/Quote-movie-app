@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:quote/cores/components/notifier/mysnackbar.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
 import 'package:quote/cores/utils/constant/strings.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
@@ -37,7 +38,22 @@ class _LoginPageState extends State<LoginPage> {
         );
       }
     } on FirebaseAuthException catch (error) {
-    } on Exception catch (otherError) {}
+      if (mounted) {
+        MySnackbar.showSnack(
+          context,
+          "something is wrong please try again",
+          Colors.red[800],
+        );
+      }
+    } on Exception catch (otherError) {
+      if (mounted) {
+        MySnackbar.showSnack(
+          context,
+          "something is wrong please try again",
+          Colors.red[800],
+        );
+      }
+    }
   }
 
   @override

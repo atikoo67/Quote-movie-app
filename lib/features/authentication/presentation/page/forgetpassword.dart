@@ -1,4 +1,5 @@
 import 'package:quote/cores/components/buttons/textbutton.dart';
+import 'package:quote/cores/components/notifier/mysnackbar.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
 import 'package:quote/cores/components/buttons/mybutton.dart';
 import 'package:quote/cores/components/textfields/phonenumber_field.dart';
@@ -16,7 +17,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   final phoneNumberController = TextEditingController();
   String? fullPhoneNumber;
   Future resetPassword() async {
-    setState(() {});
+    setState(() {
+      MySnackbar.showSnack(context, "the code is sent", Colors.green[800]);
+    });
   }
 
   @override
@@ -77,7 +80,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           children: [
                             MyTextButton(
                               text: 'Resend Code',
-                              onPressed: () async {},
+                              onPressed: () async {
+                                setState(() {
+                                  MySnackbar.showSnack(
+                                    context,
+                                    "the code is Resent",
+                                    Colors.green[800],
+                                  );
+                                });
+                              },
                             ),
                           ],
                         ),

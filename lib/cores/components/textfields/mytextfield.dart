@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quote/cores/utils/theme/textstyle.dart';
 
 class MyTextField extends StatelessWidget {
   final String label;
@@ -22,7 +21,7 @@ class MyTextField extends StatelessWidget {
         keyboardType: keyboardType,
 
         controller: controller,
-        style: AppTextStyle.textTheme.titleSmall,
+        style: theme.textTheme.titleSmall,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(15)),

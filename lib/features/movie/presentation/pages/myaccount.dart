@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:quote/cores/components/notifier/mysnackbar.dart';
 
 class MyAccount extends ConsumerStatefulWidget {
   const MyAccount({super.key});
@@ -19,20 +19,6 @@ class _MyAccountState extends ConsumerState<MyAccount> {
     setState(() {
       getUserData();
     });
-  }
-
-  Future showsnackbar(message) async {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM_RIGHT,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.green[800],
-      textColor: Colors.white,
-      fontSize: 14.0,
-    );
   }
 
   final db = FirebaseFirestore.instance;
@@ -154,11 +140,14 @@ class _MyAccountState extends ConsumerState<MyAccount> {
                           onChanged: (bool value) {
                             setState(() {
                               light = value;
-                              if (value) {
-                                showsnackbar('notification is turned on');
-                              } else {
-                                showsnackbar('notification is turned off');
-                              }
+
+                              MySnackbar.showSnack(
+                                context,
+                                value
+                                    ? 'notification is turned on'
+                                    : 'notification is turned off',
+                                value ? Colors.green[800] : Colors.red[800],
+                              );
                             });
                           },
                         ),

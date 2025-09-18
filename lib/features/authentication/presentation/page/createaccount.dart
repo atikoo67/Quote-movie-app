@@ -1,6 +1,8 @@
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quote/cores/components/buttons/checkboxbutton.dart';
+import 'package:quote/cores/components/notifier/mysnackbar.dart';
 import 'package:quote/cores/utils/constant/strings.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
 import 'package:quote/cores/components/buttons/mybutton.dart';
@@ -8,6 +10,7 @@ import 'package:quote/cores/components/textfields/mytextfield.dart';
 import 'package:quote/cores/components/textfields/passwordtextfield.dart';
 import 'package:quote/cores/components/textfields/phonenumber_field.dart';
 import 'package:quote/cores/components/buttons/textbutton.dart';
+
 import 'package:flutter/material.dart';
 import 'package:quote/features/authentication/presentation/config_login/signinchecker.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
@@ -52,15 +55,44 @@ class _CreateAccountState extends State<CreateAccount> {
 
           await db.collection("users").doc(uid).set(userData);
           if (mounted) {
+            MySnackbar.showSnack(
+              context,
+              "dear ${userNamecontroller.text.trim()} You're Registered successfully ",
+              Colors.green[800],
+            );
+
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => SignInChecker()),
             );
           }
         } else {}
-      } else {}
+      } else {
+        if (mounted) {
+          MySnackbar.showSnack(
+            context,
+            "Sorry all are required! please Enter all inputs",
+            Colors.red[800],
+          );
+        }
+      }
     } on FirebaseAuthException catch (error) {
-    } catch (e) {}
+      if (mounted) {
+        MySnackbar.showSnack(
+          context,
+          "something is wrong please try again",
+          Colors.red[800],
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        MySnackbar.showSnack(
+          context,
+          "something is wrong please try again",
+          Colors.red[800],
+        );
+      }
+    }
   }
 
   @override
@@ -170,7 +202,13 @@ class _CreateAccountState extends State<CreateAccount> {
                           child: MyCheckBox(
                             subtitle: MyTextButton(
                               text: 'Terms & Conditions and Privacy Policy.',
-                              onPressed: () {},
+                              onPressed: () {
+                                MySnackbar.showSnack(
+                                  context,
+                                  "Sorry term and condition is not provide for now",
+                                  Colors.red[800],
+                                );
+                              },
                             ),
 
                             title: Text(
