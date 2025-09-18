@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quote/cores/widgets/searchlists.dart';
+import 'package:quote/cores/components/lists/searchlists.dart';
 import 'package:quote/features/movie/presentation/providers/movie_provider.dart';
 
 class SearchField extends ConsumerStatefulWidget {

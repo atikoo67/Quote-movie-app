@@ -1,7 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:quote/features/authentication/presentation/config_login/signinchecker.dart';
 import 'package:quote/cores/utils/theme/theme.dart';
@@ -18,10 +16,6 @@ void main() async {
   await Firebase.initializeApp();
   await Permission.storage.request();
   await Permission.manageExternalStorage.request();
-
-  await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
-
-  await Hive.initFlutter();
 
   runApp(ProviderScope(child: const MyApp()));
 }

@@ -2,11 +2,11 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/widgets/mybutton.dart';
-import 'package:quote/cores/widgets/mytextfield.dart';
-import 'package:quote/cores/widgets/passwordtextfield.dart';
-import 'package:quote/cores/widgets/phonenumber_field.dart';
-import 'package:quote/cores/widgets/textbutton.dart';
+import 'package:quote/cores/components/buttons/mybutton.dart';
+import 'package:quote/cores/components/textfields/mytextfield.dart';
+import 'package:quote/cores/components/textfields/passwordtextfield.dart';
+import 'package:quote/cores/components/textfields/phonenumber_field.dart';
+import 'package:quote/cores/components/buttons/textbutton.dart';
 
 import 'package:flutter/material.dart';
 import 'package:quote/features/authentication/presentation/config_login/signinchecker.dart';
@@ -42,7 +42,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
       if (uid != null) {
         final userData = {
-          "phonenumber": phoneNumberController.text.trim(),
+          "phonenumber": fullPhoneNumber,
           "username": userNamecontroller.text.trim(),
           "email": fakeEmail,
         };
@@ -303,9 +303,6 @@ class _CreateAccountState extends State<CreateAccount> {
                                     ),
 
                                     MyTextButton(
-                                      fontSize:
-                                          ScreenSize.screenHeight(context) *
-                                          0.018,
                                       text: 'Login Here',
                                       onPressed: widget.showLoginPage,
                                     ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:quote/cores/components/lists/moviegriding.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
-import 'package:quote/cores/widgets/moviegriding.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
 import 'package:quote/features/movie/presentation/providers/movie_provider.dart';
 

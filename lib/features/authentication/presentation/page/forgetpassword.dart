@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/widgets/mybutton.dart';
-import 'package:quote/cores/widgets/phonenumber_field.dart';
+import 'package:quote/cores/components/buttons/mybutton.dart';
+import 'package:quote/cores/components/textfields/phonenumber_field.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
 import 'package:flutter/material.dart';
 

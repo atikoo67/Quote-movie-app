@@ -1,12 +1,11 @@
-import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
 import 'package:quote/cores/utils/constant/strings.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/widgets/mybutton.dart';
-import 'package:quote/cores/widgets/passwordtextfield.dart';
-import 'package:quote/cores/widgets/phonenumber_field.dart';
-import 'package:quote/cores/widgets/textbutton.dart';
+import 'package:quote/cores/components/buttons/mybutton.dart';
+import 'package:quote/cores/components/textfields/passwordtextfield.dart';
+import 'package:quote/cores/components/textfields/phonenumber_field.dart';
+import 'package:quote/cores/components/buttons/textbutton.dart';
 import 'package:quote/features/authentication/presentation/config_login/signinchecker.dart';
 import 'package:quote/features/authentication/presentation/page/forgetpassword.dart';
 import 'package:flutter/material.dart';

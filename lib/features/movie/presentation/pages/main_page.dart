@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quote/cores/widgets/bottomnavbar.dart';
+import 'package:quote/cores/components/buttons/bottomnavbar.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

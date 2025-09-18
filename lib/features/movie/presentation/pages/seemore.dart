@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quote/cores/utils/constant/strings.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/widgets/moviegriding.dart';
+import 'package:quote/cores/components/lists/moviegriding.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
 
 class SeeMore extends StatefulWidget {
@@ -19,8 +19,8 @@ class _SeeMoreState extends State<SeeMore> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset("assets/launch_icon/my_logo.png", height: 40),
             Text(AppStrings.appName, style: AppTextStyle.textTheme.bodyLarge),

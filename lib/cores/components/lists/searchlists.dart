@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
-import 'package:quote/cores/widgets/searchcard.dart';
+import 'package:quote/cores/components/cards/searchcard.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
 
 class SearchResultsList extends ConsumerStatefulWidget {

@@ -4,7 +4,7 @@ import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:quote/cores/utils/constant/app_endpoint.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
-import 'package:quote/features/movie/presentation/components/loading_card.dart';
+import 'package:quote/cores/components/cards/loading_card.dart';
 import 'package:quote/features/movie/presentation/pages/movie_detail.dart';
 import 'package:shimmer/shimmer.dart';
 

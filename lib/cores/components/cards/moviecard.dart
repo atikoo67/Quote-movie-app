@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:quote/cores/utils/constant/app_endpoint.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
-import 'package:quote/features/movie/presentation/components/loading_card.dart';
+import 'package:quote/cores/components/cards/loading_card.dart';
 
 class MovieCard extends StatelessWidget {
   final MovieModel movie;

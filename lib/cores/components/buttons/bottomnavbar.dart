@@ -20,7 +20,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return PersistentTabView(
       backgroundColor: theme.colorScheme.surface,
       context,
-      navBarStyle: NavBarStyle.style6,
+      navBarStyle: NavBarStyle.style3,
       hideNavigationBarWhenKeyboardAppears: true,
       resizeToAvoidBottomInset: false,
       screens: [HomePage(), SeriesPage(), SearchField(), MyAccount()],
