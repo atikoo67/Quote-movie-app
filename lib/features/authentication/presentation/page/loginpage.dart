@@ -83,20 +83,21 @@ class _LoginPageState extends State<LoginPage> {
 
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         spacing: 20,
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
                             child: Column(
                               spacing: 10,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Login there!',
+                                  'Welcome Back!',
                                   style: theme.textTheme.bodyLarge,
                                 ),
                                 Text(
-                                  'Enter your details to jump back in. We missed you!😊',
+                                  'Log In and Pick Up Where You Left Off',
                                   style: theme.textTheme.bodySmall,
                                 ),
                               ],
@@ -157,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
                             onTap: signIn,
                             child: Text(
                               'Login',
-                              style: theme.textTheme.bodyMedium,
+                              style: theme.textTheme.titleSmall,
                             ),
                           ),
                           Row(
