@@ -41,7 +41,9 @@ class _LoginPageState extends State<LoginPage> {
       if (mounted) {
         MySnackbar.showSnack(
           context,
-          "something is wrong please try again",
+          error.message!.contains("incorrect")
+              ? "Password or Phonenumber is Incorrect"
+              : "something is wrong please try again",
           Colors.red[800],
         );
       }
