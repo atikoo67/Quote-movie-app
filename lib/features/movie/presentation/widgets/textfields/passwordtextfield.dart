@@ -40,7 +40,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         style: theme.textTheme.titleSmall,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
 
           labelStyle: theme.textTheme.titleSmall,

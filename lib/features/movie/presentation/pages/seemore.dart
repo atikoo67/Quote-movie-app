@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quote/cores/utils/constant/strings.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/components/lists/moviegriding.dart';
+import 'package:quote/features/movie/presentation/widgets/lists/moviegriding.dart';
 import 'package:quote/features/movie/domain/entities/moviemodel.dart';
 
 class SeeMore extends StatefulWidget {

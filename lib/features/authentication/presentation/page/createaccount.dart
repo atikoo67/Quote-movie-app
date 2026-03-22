@@ -1,15 +1,15 @@
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:quote/cores/components/buttons/checkboxbutton.dart';
-import 'package:quote/cores/components/notifier/mysnackbar.dart';
+import 'package:quote/features/movie/presentation/widgets/buttons/checkboxbutton.dart';
+import 'package:quote/features/movie/presentation/widgets/notifier/mysnackbar.dart';
 import 'package:quote/cores/utils/constant/strings.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/components/buttons/mybutton.dart';
-import 'package:quote/cores/components/textfields/mytextfield.dart';
-import 'package:quote/cores/components/textfields/passwordtextfield.dart';
-import 'package:quote/cores/components/textfields/phonenumber_field.dart';
-import 'package:quote/cores/components/buttons/textbutton.dart';
+import 'package:quote/features/movie/presentation/widgets/buttons/mybutton.dart';
+import 'package:quote/features/movie/presentation/widgets/textfields/mytextfield.dart';
+import 'package:quote/features/movie/presentation/widgets/textfields/passwordtextfield.dart';
+import 'package:quote/features/movie/presentation/widgets/textfields/phonenumber_field.dart';
+import 'package:quote/features/movie/presentation/widgets/buttons/textbutton.dart';
 
 import 'package:flutter/material.dart';
 import 'package:quote/features/authentication/presentation/config_login/signinchecker.dart';
@@ -31,6 +31,7 @@ class _CreateAccountState extends State<CreateAccount> {
   String? fullPhoneNumber;
   bool termsAccepted = false;
   final db = FirebaseFirestore.instance;
+
   Future signUp() async {
     try {
       final fakeEmail = "phone.$fullPhoneNumber@royalmovie.com";
@@ -45,50 +46,47 @@ class _CreateAccountState extends State<CreateAccount> {
             );
 
         final uid = isRegistered.user?.uid;
-
         if (uid != null) {
           final userData = {
             "phonenumber": fullPhoneNumber,
             "username": userNamecontroller.text.trim(),
             "email": fakeEmail,
           };
-
           await db.collection("users").doc(uid).set(userData);
           if (mounted) {
             MySnackbar.showSnack(
               context,
-              "dear ${userNamecontroller.text.trim()} You're Registered successfully ",
+              "Dear ${userNamecontroller.text.trim()}, You're Registered successfully",
               Colors.green[800],
             );
-
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => SignInChecker()),
             );
           }
-        } else {}
+        }
       } else {
         if (mounted) {
           MySnackbar.showSnack(
             context,
-            "Sorry all are required! please Enter all inputs",
+            "All fields are required! Please fill in all inputs",
             Colors.red[800],
           );
         }
       }
-    } on FirebaseAuthException catch (error) {
+    } on FirebaseAuthException catch (_) {
       if (mounted) {
         MySnackbar.showSnack(
           context,
-          "something is wrong please try again",
+          "Something went wrong, please try again",
           Colors.red[800],
         );
       }
-    } catch (e) {
+    } catch (_) {
       if (mounted) {
         MySnackbar.showSnack(
           context,
-          "something is wrong please try again",
+          "Something went wrong, please try again",
           Colors.red[800],
         );
       }
@@ -108,150 +106,115 @@ class _CreateAccountState extends State<CreateAccount> {
     final theme = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/launch_icon/my_logo.png", height: 40),
-            Text(AppStrings.appName, style: AppTextStyle.textTheme.bodyLarge),
-          ],
-        ),
-      ),
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: Colors.white,
       body: SafeArea(
-        bottom: false,
         child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: SizedBox(
-            height: ScreenSize.screenHeight(context) * 0.8,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(),
-                Column(
-                  spacing: 20,
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Column(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 3,
+                    Image.asset("assets/launch_icon/my_logo.png", height: 50),
+                    const SizedBox(height: 10),
+                    Text(
+                      AppStrings.appName,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 6,
-                        children: [
-                          Text(
-                            'Create Your Free Account',
-                            style: theme.textTheme.bodyMedium,
-                          ),
-                          Text(
-                            " Join Now to Unlock Unlimited Movies & Shows",
-                            style: theme.textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 25),
-                          child: PhoneNumberField(
-                            phoneNumberController: phoneNumberController,
-                            onChanged: (phone) {
-                              setState(() {
-                                fullPhoneNumber = phone.completeNumber;
-                              });
-                            },
-                          ),
-                        ),
-                        MyTextField(
-                          label: 'Usernmae',
-                          controller: userNamecontroller,
-                        ),
-                        PasswordTextField(
-                          label: 'Password',
-                          controller: passwordController,
-                          validator: (value) {
-                            if (value!.isNotEmpty && value.length < 8) {
-                              return "your password must be greater than 8 digit";
-                            }
-                            return null;
-                          },
-                        ),
-                        PasswordTextField(
-                          label: 'Confirm Password',
-                          controller: confirmController,
-                          validator: (value) {
-                            if (value!.isNotEmpty &&
-                                passwordController.text != value) {
-                              return 'the confirmation password is not correct';
-                            }
-                            return null;
-                          },
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 25,
-                            vertical: 8,
-                          ),
-                          child: MyCheckBox(
-                            subtitle: MyTextButton(
-                              text: 'Terms & Conditions and Privacy Policy.',
-                              onPressed: () {
-                                MySnackbar.showSnack(
-                                  context,
-                                  "Sorry term and condition is not provide for now",
-                                  Colors.red[800],
-                                );
-                              },
-                            ),
-
-                            title: Text(
-                              "By continuing, you agree to our ",
-                              style: theme.textTheme.titleSmall,
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),
-
-                Column(
-                  spacing: 10,
-                  children: [
-                    MyButton(
-                      onTap: signUp,
-                      child: Text(
-                        'Register',
-                        style: theme.textTheme.titleSmall,
-                      ),
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 3,
-                      children: [
-                        Text(
-                          'i am a member!',
-                          style: theme.textTheme.bodySmall,
-                        ),
-
-                        MyTextButton(
-                          text: 'Login Here',
-                          onPressed: widget.showLoginPage,
-                        ),
-                      ],
-                    ),
-                  ],
+              ),
+              const SizedBox(height: 40),
+              Text(
+                'Create Your Free Account',
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Join now to unlock unlimited movies & shows',
+                style: theme.textTheme.bodyMedium?.copyWith(color: Colors.grey),
+              ),
+              const SizedBox(height: 30),
+              PhoneNumberField(
+                phoneNumberController: phoneNumberController,
+                onChanged: (phone) {
+                  setState(() {
+                    fullPhoneNumber = phone.completeNumber;
+                  });
+                },
+              ),
+              const SizedBox(height: 15),
+              MyTextField(label: 'Username', controller: userNamecontroller),
+              const SizedBox(height: 15),
+              PasswordTextField(
+                label: 'Password',
+                controller: passwordController,
+                validator: (value) {
+                  if (value!.isNotEmpty && value.length < 8) {
+                    return "Password must be at least 8 characters";
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 15),
+              PasswordTextField(
+                label: 'Confirm Password',
+                controller: confirmController,
+                validator: (value) {
+                  if (value!.isNotEmpty && passwordController.text != value) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
+              MyCheckBox(
+                subtitle: MyTextButton(
+                  text: 'Terms & Conditions and Privacy Policy',
+                  onPressed: () {
+                    MySnackbar.showSnack(
+                      context,
+                      "Terms and conditions are not provided yet",
+                      Colors.red[800],
+                    );
+                  },
+                ),
+                title: Text(
+                  "By continuing, you agree to our",
+                  style: theme.textTheme.bodySmall,
+                ),
+              ),
+              const SizedBox(height: 30),
+              MyButton(
+                onTap: signUp,
+
+                child: Center(
+                  child: Text(
+                    'Register',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Already a member?', style: theme.textTheme.bodyMedium),
+                  MyTextButton(
+                    text: 'Login Here',
+                    onPressed: widget.showLoginPage,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

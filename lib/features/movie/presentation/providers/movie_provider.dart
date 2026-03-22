@@ -54,7 +54,6 @@ final recommendationProvider = FutureProvider.family<List<MovieModel>, int>((
   return useCase(id);
 });
 
-// similar movies provider
 final similarMoviesProvider = FutureProvider.family<List<MovieModel>, int>((
   ref,
   id,

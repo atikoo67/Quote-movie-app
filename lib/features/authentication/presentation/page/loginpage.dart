@@ -1,12 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:quote/cores/components/notifier/mysnackbar.dart';
-import 'package:quote/cores/utils/constant/screen_size.dart';
+import 'package:quote/features/movie/presentation/widgets/notifier/mysnackbar.dart';
 import 'package:quote/cores/utils/constant/strings.dart';
-import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/components/buttons/mybutton.dart';
-import 'package:quote/cores/components/textfields/passwordtextfield.dart';
-import 'package:quote/cores/components/textfields/phonenumber_field.dart';
-import 'package:quote/cores/components/buttons/textbutton.dart';
+import 'package:quote/features/movie/presentation/widgets/buttons/mybutton.dart';
+import 'package:quote/features/movie/presentation/widgets/textfields/passwordtextfield.dart';
+import 'package:quote/features/movie/presentation/widgets/textfields/phonenumber_field.dart';
+import 'package:quote/features/movie/presentation/widgets/buttons/textbutton.dart';
 import 'package:quote/features/authentication/presentation/config_login/signinchecker.dart';
 import 'package:quote/features/authentication/presentation/page/forgetpassword.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +20,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final phoneNumberController = TextEditingController();
   final passwordController = TextEditingController();
-  String? incorrect;
   String? fullPhoneNumber;
+
   Future signIn() async {
     final authenticateEmail = "phone.$fullPhoneNumber@royalmovie.com";
     try {
@@ -42,16 +40,16 @@ class _LoginPageState extends State<LoginPage> {
         MySnackbar.showSnack(
           context,
           error.message!.contains("incorrect")
-              ? "Password or Phonenumber is Incorrect"
-              : "something is wrong please try again",
+              ? "Password or Phone number is incorrect"
+              : "Something went wrong, please try again",
           Colors.red[800],
         );
       }
-    } on Exception catch (otherError) {
+    } catch (_) {
       if (mounted) {
         MySnackbar.showSnack(
           context,
-          "something is wrong please try again",
+          "Something went wrong, please try again",
           Colors.red[800],
         );
       }
@@ -70,136 +68,98 @@ class _LoginPageState extends State<LoginPage> {
     final theme = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset("assets/launch_icon/my_logo.png", height: 40),
-            Text(AppStrings.appName, style: AppTextStyle.textTheme.bodyLarge),
-          ],
-        ),
-      ),
-      backgroundColor: theme.scaffoldBackgroundColor,
+      backgroundColor: Colors.white,
       body: SafeArea(
-        bottom: false,
         child: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-          child: SizedBox(
-            height: ScreenSize.screenHeight(context) * 0.8,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(height: 180),
-
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 20,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25),
-                            child: Column(
-                              spacing: 10,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Welcome Back!',
-                                  style: theme.textTheme.bodyLarge,
-                                ),
-                                Text(
-                                  'Log In and Pick Up Where You Left Off',
-                                  style: theme.textTheme.bodySmall,
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 25),
-                                child: PhoneNumberField(
-                                  phoneNumberController: phoneNumberController,
-                                  onChanged: (phone) {
-                                    setState(() {
-                                      fullPhoneNumber = phone.completeNumber;
-                                      // print(fullPhoneNumber); // e.g. +251912345678
-                                    });
-                                  },
-                                ),
-                              ),
-                              PasswordTextField(
-                                label: 'Password',
-                                controller: passwordController,
-                                validator: (value) {
-                                  if (value!.isNotEmpty && value.length < 8) {
-                                    return "your password must be greater than 8 digit";
-                                  }
-                                  return null;
-                                },
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 25),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    MyTextButton(
-                                      text: 'Forgot Password?',
-                                      onPressed: () =>
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ForgetPassword(),
-                                            ),
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Column(
+                  children: [
+                    Image.asset("assets/launch_icon/my_logo.png", height: 50),
+                    const SizedBox(height: 10),
+                    Text(
+                      AppStrings.appName,
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-
-                      Column(
-                        spacing: 15,
-                        children: [
-                          MyButton(
-                            onTap: signIn,
-                            child: Text(
-                              'Login',
-                              style: theme.textTheme.titleSmall,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            spacing: 4,
-                            children: [
-                              Text(
-                                'don\'t have an Account?',
-                                style: theme.textTheme.bodySmall,
-                              ),
-                              MyTextButton(
-                                text: 'Register here',
-                                onPressed: widget.showSignupPage,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 50),
+              Text(
+                'Welcome Back!',
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Log in and pick up where you left off',
+                style: theme.textTheme.bodyMedium?.copyWith(color: Colors.grey),
+              ),
+              const SizedBox(height: 30),
+              PhoneNumberField(
+                phoneNumberController: phoneNumberController,
+                onChanged: (phone) {
+                  setState(() {
+                    fullPhoneNumber = phone.completeNumber;
+                  });
+                },
+              ),
+              const SizedBox(height: 15),
+              PasswordTextField(
+                label: 'Password',
+                controller: passwordController,
+                validator: (value) {
+                  if (value!.isNotEmpty && value.length < 8) {
+                    return "Password must be at least 8 characters";
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 10),
+              Align(
+                alignment: Alignment.centerRight,
+                child: MyTextButton(
+                  text: 'Forgot Password?',
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ForgetPassword()),
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 25),
+              MyButton(
+                onTap: signIn,
+
+                child: Center(
+                  child: Text(
+                    'Login',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don’t have an account?',
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                  MyTextButton(
+                    text: 'Register Here',
+                    onPressed: widget.showSignupPage,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quote/cores/components/notifier/mysnackbar.dart';
+import 'package:quote/features/movie/presentation/widgets/notifier/mysnackbar.dart';
 
 class MyAccount extends ConsumerStatefulWidget {
   const MyAccount({super.key});

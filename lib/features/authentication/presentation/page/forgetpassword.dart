@@ -1,8 +1,8 @@
-import 'package:quote/cores/components/buttons/textbutton.dart';
-import 'package:quote/cores/components/notifier/mysnackbar.dart';
+import 'package:quote/features/movie/presentation/widgets/buttons/textbutton.dart';
+import 'package:quote/features/movie/presentation/widgets/notifier/mysnackbar.dart';
 import 'package:quote/cores/utils/theme/textstyle.dart';
-import 'package:quote/cores/components/buttons/mybutton.dart';
-import 'package:quote/cores/components/textfields/phonenumber_field.dart';
+import 'package:quote/features/movie/presentation/widgets/buttons/mybutton.dart';
+import 'package:quote/features/movie/presentation/widgets/textfields/phonenumber_field.dart';
 import 'package:quote/cores/utils/constant/screen_size.dart';
 import 'package:flutter/material.dart';
 

@@ -24,7 +24,7 @@ class MyTextField extends StatelessWidget {
         style: theme.textTheme.titleSmall,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15)),
+            borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
 
           labelText: label,
